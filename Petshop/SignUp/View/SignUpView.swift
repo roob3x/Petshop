@@ -70,13 +70,13 @@ extension SignUpView {
 
 extension SignUpView {
     var phoneField: some View {
-        EditTextView(text: $viewModel.phone, placeholder: "Telefone *", keyboard: .numberPad, error: "Preencha corretamente seu Telefone para contato", failure: viewModel.phone.count < 10 || viewModel.phone.count >= 12)
+        EditTextView(text: $viewModel.phone, placeholder: "Telefone *", keyboard: .numberPad, error: "Preencha  DD + Telefone", failure: viewModel.phone.count < 10 || viewModel.phone.count >= 12)
     }
 }
 
 extension SignUpView {
     var birthdayField: some View {
-        EditTextView(text: $viewModel.birthday, placeholder: "Data de nascimento *", keyboard: .numberPad, error: "Preencha corretamente seu Telefone para contato", failure: viewModel.birthday.count < 10)
+        EditTextView(text: $viewModel.birthday, placeholder: "Data de nascimento *", keyboard: .numberPad, error: "Preencha data nasc dd-MM-YYYY", failure: viewModel.birthday.count < 10)
     }
 }
 
