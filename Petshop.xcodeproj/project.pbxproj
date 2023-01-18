@@ -10,6 +10,8 @@
 		3836ADCC296F68040042FA0E /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836ADCB296F68040042FA0E /* WebService.swift */; };
 		3836ADCE29715A090042FA0E /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836ADCD29715A080042FA0E /* SignUpRequest.swift */; };
 		38ACEA862972C3B100103FAA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEA852972C3B100103FAA /* ErrorResponse.swift */; };
+		38ACEA8E2976BD5000103FAA /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEA8D2976BD5000103FAA /* SignInResponse.swift */; };
+		38ACEA902976BD7500103FAA /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEA8F2976BD7500103FAA /* SignInRequest.swift */; };
 		38C9B5FC295D21F800F5384F /* PetshopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9B5FB295D21F800F5384F /* PetshopApp.swift */; };
 		38C9B600295D21FA00F5384F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C9B5FF295D21FA00F5384F /* Assets.xcassets */; };
 		38C9B603295D21FA00F5384F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C9B602295D21FA00F5384F /* Preview Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		3836ADCB296F68040042FA0E /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		3836ADCD29715A080042FA0E /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		38ACEA852972C3B100103FAA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		38ACEA8D2976BD5000103FAA /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
+		38ACEA8F2976BD7500103FAA /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
 		38C9B5F8295D21F800F5384F /* Petshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C9B5FB295D21F800F5384F /* PetshopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopApp.swift; sourceTree = "<group>"; };
 		38C9B5FF295D21FA00F5384F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				38C9B61C295DAD9100F5384F /* SignInUiState.swift */,
+				38ACEA8D2976BD5000103FAA /* SignInResponse.swift */,
+				38ACEA8F2976BD7500103FAA /* SignInRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,8 +385,10 @@
 				38C9B62A295DB1F300F5384F /* HomeViewModel.swift in Sources */,
 				38C9B630295DB58E00F5384F /* SplashView.swift in Sources */,
 				38C9B6432965082500F5384F /* SignUpViewModel.swift in Sources */,
+				38ACEA8E2976BD5000103FAA /* SignInResponse.swift in Sources */,
 				38C9B6452965085000F5384F /* SignUpUiState.swift in Sources */,
 				38C9B61F295DADDD00F5384F /* SignInViewModel.swift in Sources */,
+				38ACEA902976BD7500103FAA /* SignInRequest.swift in Sources */,
 				38C9B63429644AF300F5384F /* EditTextView.swift in Sources */,
 				38C9B62C295DB21900F5384F /* HomeView.swift in Sources */,
 				38C9B64B2965096C00F5384F /* SignUpViewRouter.swift in Sources */,
