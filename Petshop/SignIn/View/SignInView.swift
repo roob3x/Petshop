@@ -117,6 +117,6 @@ extension SignInView {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView(viewModel: SignInViewModel())
+        SignInView(viewModel: SignInViewModel(interactor: SignInInteractor()))
     }
 }

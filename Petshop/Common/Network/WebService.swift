@@ -76,13 +76,13 @@ enum WebService {
         task.resume()
     }
     
-    private static func call<T: Encodable> (path: Endpoint, body: T, completion: @escaping (Result) -> Void) {
+    public static func call<T: Encodable> (path: Endpoint, body: T, completion: @escaping (Result) -> Void) {
         //linha abaixo realiza a requisicao
         guard let jsonData = try? JSONEncoder().encode(body) else { return }
         call(path: path, contentType: .json, data: jsonData, completion: completion)
     }
     
-    private static func call(path: Endpoint,params: [URLQueryItem], completion: @escaping (Result) -> Void) {
+    public static func call(path: Endpoint,params: [URLQueryItem], completion: @escaping (Result) -> Void) {
         //linha abaixo realiza a requisicao
         guard let urlRequest = completeUrl(path: path) else { return }
         guard let absoluteURL = urlRequest.url?.absoluteString else { return }
@@ -108,31 +108,6 @@ enum WebService {
             case .sucess(let data):
                 completion(true, nil)
                 print(String(data: data, encoding: .utf8))
-                break
-            }
-        }
-        
-    }
-    
-    static func login(request: SignInRequest, completion: @escaping (SignInResponse?, SignInErrorResponse?) -> Void){
-        call(path: .login, params: [
-            URLQueryItem(name: "username", value: request.email),
-            URLQueryItem(name: "password", value: request.password)
-                                      ]) { result in
-            switch result {
-            case .failure(let error, let data):
-                if let data = data {
-                    if error == .unauthorized {
-                        let decoder = JSONDecoder()
-                        let response = try? decoder.decode(SignInErrorResponse.self, from: data)
-                        completion(nil, response)
-                    }
-                }
-                break
-            case .sucess(let data):
-                let decoder = JSONDecoder()
-                let response = try? decoder.decode(SignInResponse.self, from: data)
-                completion(response, nil)
                 break
             }
         }

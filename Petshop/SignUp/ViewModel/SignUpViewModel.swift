@@ -50,22 +50,22 @@ class SignUpViewModel: ObservableObject {
             }
             
             if let sucess = sucessResponse {
-                WebService.login(request: SignInRequest.init(email: self.email, password: self.password)) { (sucessResponse, errorResponse) in
-                    
-                    if let errorSignIn = errorResponse {
-                        DispatchQueue.main.async {
-                            self.uiState = .error(errorSignIn.detail.message)
-                        }
-                    }
-                    
-                    if let sucessSignIn = sucessResponse {
-                        DispatchQueue.main.async {
-                            print(sucessSignIn)
-                            self.publisher.send(true)
-                            self.uiState = .sucess
-                        }
-                    }
-                }
+//                WebService.login(request: SignInRequest.init(email: self.email, password: self.password)) { (sucessResponse, errorResponse) in
+//
+//                    if let errorSignIn = errorResponse {
+//                        DispatchQueue.main.async {
+//                            self.uiState = .error(errorSignIn.detail.message)
+//                        }
+//                    }
+//
+//                    if let sucessSignIn = sucessResponse {
+//                        DispatchQueue.main.async {
+//                            print(sucessSignIn)
+//                            self.publisher.send(true)
+//                            self.uiState = .sucess
+//                        }
+//                    }
+//                }
             }
             
         }
