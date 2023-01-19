@@ -54,6 +54,14 @@ struct SignInView: View {
                                     .padding(.top, 16)
                             }
                         }
+                        
+                        if case SignInUiState.error(let value) = viewModel.uiState {
+                            Text("")
+                                .alert(isPresented: .constant(true)) {
+                                    Alert(title: Text("Petz"), message: Text(value), dismissButton: .default(Text("Ok")) {
+                                    })
+                                }
+                        }
                     }
                 }
             }

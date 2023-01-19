@@ -36,10 +36,24 @@ class SignInViewModel: ObservableObject {
     
     func login(){
         self.uiState = .loading
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.uiState = .goToHomeScreen
-            //self.uiState = .error("Usuario nao cadastrado")
-    }
+        
+        WebService.login(request: SignInRequest.init(email: email, password: password)) { (sucessResponse, errorResponse) in
+
+            if let error = errorResponse {
+                DispatchQueue.main.async {
+                    self.uiState = .error(error.detail.message)
+                }
+            }
+            
+            if let sucess = sucessResponse {
+                DispatchQueue.main.async {
+                    self.uiState = .goToHomeScreen
+                }
+            }
+            
+            
+            
+        }
     }
 }
 

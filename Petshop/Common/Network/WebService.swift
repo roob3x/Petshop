@@ -8,8 +8,9 @@
 import Foundation
 
 enum WebService {
+    
     enum Endpoint: String {
-        case base = "https://habitplus-api.tiagoaguiar.co/"
+        case base = "https://habitplus-api.tiagoaguiar.co"
         case postUser = "/users"
         case login = "/auth/login"
     }
@@ -37,7 +38,6 @@ enum WebService {
     }
     
     private static func call(path: Endpoint, contentType: ContentType, data: Data?, completion: @escaping (Result) -> Void) {
-        //linha abaixo realiza a requisicao
         guard var urlRequest = completeUrl(path: path) else { return }
         
         urlRequest.httpMethod = "POST"
@@ -67,9 +67,8 @@ enum WebService {
                 }
             }
             
-            
+            print(String(data: data, encoding: .utf8))
             print("response\n")
-            
             print(response)
             
         }
@@ -92,6 +91,7 @@ enum WebService {
         call(path: path, contentType: .formUrl, data: components?.query?.data(using: .utf8), completion: completion)
     }
     
+    
     static func postUser(request: SignUpRequest, completion: @escaping (Bool?, ErrorResponse?) -> Void){
         call(path: .postUser, body: request) { result in
             switch result {
@@ -100,6 +100,7 @@ enum WebService {
                     if error == .badRequest {
                         let decoder = JSONDecoder()
                         let response = try? decoder.decode(ErrorResponse.self, from: data)
+                        print(response?.detail)
                         completion(nil, response)
                     }
                 }
@@ -113,7 +114,7 @@ enum WebService {
         
     }
     
-    static func login(request: SignInRequest, completion: @escaping (SignInResponse?, ErrorResponse?) -> Void){
+    static func login(request: SignInRequest, completion: @escaping (SignInResponse?, SignInErrorResponse?) -> Void){
         call(path: .login, params: [
             URLQueryItem(name: "username", value: request.email),
             URLQueryItem(name: "password", value: request.password)
@@ -123,7 +124,7 @@ enum WebService {
                 if let data = data {
                     if error == .unauthorized {
                         let decoder = JSONDecoder()
-                        let response = try? decoder.decode(ErrorResponse.self, from: data)
+                        let response = try? decoder.decode(SignInErrorResponse.self, from: data)
                         completion(nil, response)
                     }
                 }
@@ -135,5 +136,6 @@ enum WebService {
                 break
             }
         }
+        
     }
 }
