@@ -8,12 +8,12 @@
 import Foundation
 import Combine
 
-class RemoteDataSource {
+class SignInRemoteDataSource {
     
     //padrao singleton
     // tem apenas 1 unico objeto vivo dentro da aplicacao
     
-    static var shared: RemoteDataSource = RemoteDataSource()
+    static var shared: SignInRemoteDataSource = SignInRemoteDataSource()
     
     private init() {
         
@@ -37,7 +37,7 @@ class RemoteDataSource {
                         }
                     }
                     break
-                case .sucess(let data):
+                case .success(let data):
                     let decoder = JSONDecoder()
                     let response = try? decoder.decode(SignInResponse.self, from: data)
                     

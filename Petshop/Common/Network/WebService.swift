@@ -23,7 +23,7 @@ enum WebService {
     }
     
     enum Result {
-        case sucess(Data)
+        case success(Data)
         case failure(NetWorkError, Data?)
     }
     
@@ -61,7 +61,7 @@ enum WebService {
                     completion(.failure(.unauthorized, data))
                     break
                 case 200:
-                    completion(.sucess(data))
+                    completion(.success(data))
                 default:
                     break
                 }
@@ -89,28 +89,5 @@ enum WebService {
         var components = URLComponents(string: absoluteURL)
         components?.queryItems = params
         call(path: path, contentType: .formUrl, data: components?.query?.data(using: .utf8), completion: completion)
-    }
-    
-    
-    static func postUser(request: SignUpRequest, completion: @escaping (Bool?, ErrorResponse?) -> Void){
-        call(path: .postUser, body: request) { result in
-            switch result {
-            case .failure(let error, let data):
-                if let data = data {
-                    if error == .badRequest {
-                        let decoder = JSONDecoder()
-                        let response = try? decoder.decode(ErrorResponse.self, from: data)
-                        print(response?.detail)
-                        completion(nil, response)
-                    }
-                }
-                break
-            case .sucess(let data):
-                completion(true, nil)
-                print(String(data: data, encoding: .utf8))
-                break
-            }
-        }
-        
     }
 }

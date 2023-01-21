@@ -10,7 +10,7 @@ import Foundation
 enum SignUpUiState: Equatable {
     case none
     case loading
-    case sucess
+    case success
     case goToHomeScreen
     case error(String)
 }
