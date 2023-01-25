@@ -57,6 +57,8 @@ class SignInViewModel: ObservableObject {
         } receiveValue: { success in
             // aqui acontence o SUCESSO
             print(success)
+            let auth = UserAuth(idToken: success.accessToken, refreshToken: success.refreshToken, expires: Date().timeIntervalSince1970 + Double(success.expires), tokenType: success.tokenType)
+            self.interactor.insertAuth(userAuth: auth)
             self.uiState = .goToHomeScreen
                 
             }

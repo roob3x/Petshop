@@ -18,6 +18,11 @@
 		38ACEAA2297A219500103FAA /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEAA1297A219500103FAA /* AppError.swift */; };
 		38ACEAAA297C782200103FAA /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEAA9297C782200103FAA /* SignUpInteractor.swift */; };
 		38ACEAAC297C783400103FAA /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEAAB297C783400103FAA /* SignUpRemoteDataSource.swift */; };
+		38ACEAB9297F6F8100103FAA /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEAB8297F6F8100103FAA /* UserAuth.swift */; };
+		38ACEABB297F703700103FAA /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEABA297F703700103FAA /* LocalDataSource.swift */; };
+		38ACEABE297F750600103FAA /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEABD297F750600103FAA /* SplashInteractor.swift */; };
+		38ACEAC0297F751800103FAA /* SplashRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEABF297F751800103FAA /* SplashRemoteDataSource.swift */; };
+		38ACEAC2297F757C00103FAA /* RefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEAC1297F757C00103FAA /* RefreshRequest.swift */; };
 		38C9B5FC295D21F800F5384F /* PetshopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9B5FB295D21F800F5384F /* PetshopApp.swift */; };
 		38C9B600295D21FA00F5384F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C9B5FF295D21FA00F5384F /* Assets.xcassets */; };
 		38C9B603295D21FA00F5384F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C9B602295D21FA00F5384F /* Preview Assets.xcassets */; };
@@ -54,6 +59,11 @@
 		38ACEAA1297A219500103FAA /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		38ACEAA9297C782200103FAA /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
 		38ACEAAB297C783400103FAA /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
+		38ACEAB8297F6F8100103FAA /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
+		38ACEABA297F703700103FAA /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		38ACEABD297F750600103FAA /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
+		38ACEABF297F751800103FAA /* SplashRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRemoteDataSource.swift; sourceTree = "<group>"; };
+		38ACEAC1297F757C00103FAA /* RefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequest.swift; sourceTree = "<group>"; };
 		38C9B5F8295D21F800F5384F /* Petshop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petshop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C9B5FB295D21F800F5384F /* PetshopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopApp.swift; sourceTree = "<group>"; };
 		38C9B5FF295D21FA00F5384F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3836ADCB296F68040042FA0E /* WebService.swift */,
+				38ACEABA297F703700103FAA /* LocalDataSource.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -112,6 +123,15 @@
 			children = (
 				38ACEAA9297C782200103FAA /* SignUpInteractor.swift */,
 				38ACEAAB297C783400103FAA /* SignUpRemoteDataSource.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		38ACEABC297F74F700103FAA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				38ACEABD297F750600103FAA /* SplashInteractor.swift */,
+				38ACEABF297F751800103FAA /* SplashRemoteDataSource.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -158,6 +178,7 @@
 		38C9B609295DA7F400F5384F /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				38ACEABC297F74F700103FAA /* Interactor */,
 				38C9B60D295DA8C300F5384F /* ViewModel */,
 				38C9B60C295DA8BE00F5384F /* View */,
 				38C9B60B295DA8B700F5384F /* Model */,
@@ -169,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				38C9B60E295DA95800F5384F /* SplashUiState.swift */,
+				38ACEAC1297F757C00103FAA /* RefreshRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +364,7 @@
 				38C9B64D296509D500F5384F /* Gender.swift */,
 				38ACEA852972C3B100103FAA /* ErrorResponse.swift */,
 				38ACEAA1297A219500103FAA /* AppError.swift */,
+				38ACEAB8297F6F8100103FAA /* UserAuth.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,6 +452,7 @@
 				38ACEA9C297959BD00103FAA /* SignInInteractor.swift in Sources */,
 				38C9B63429644AF300F5384F /* EditTextView.swift in Sources */,
 				38C9B62C295DB21900F5384F /* HomeView.swift in Sources */,
+				38ACEABE297F750600103FAA /* SplashInteractor.swift in Sources */,
 				38C9B64B2965096C00F5384F /* SignUpViewRouter.swift in Sources */,
 				38C9B5FC295D21F800F5384F /* PetshopApp.swift in Sources */,
 				3836ADCC296F68040042FA0E /* WebService.swift in Sources */,
@@ -437,14 +461,18 @@
 				38C9B63D2964FFB700F5384F /* LoadingButtonView.swift in Sources */,
 				38C9B63A29644C1D00F5384F /* String+Extensions.swift in Sources */,
 				38C9B60F295DA95800F5384F /* SplashUiState.swift in Sources */,
+				38ACEAC0297F751800103FAA /* SplashRemoteDataSource.swift in Sources */,
 				38C9B623295DAE1100F5384F /* SignInViewRouter.swift in Sources */,
 				38C9B611295DAA1200F5384F /* SplashViewModel.swift in Sources */,
 				38ACEA862972C3B100103FAA /* ErrorResponse.swift in Sources */,
 				38C9B64E296509D500F5384F /* Gender.swift in Sources */,
+				38ACEAC2297F757C00103FAA /* RefreshRequest.swift in Sources */,
 				38C9B62E295DB39900F5384F /* SignInView.swift in Sources */,
+				38ACEAB9297F6F8100103FAA /* UserAuth.swift in Sources */,
 				3836ADCE29715A090042FA0E /* SignUpRequest.swift in Sources */,
 				38C9B6472965086500F5384F /* SignUpView.swift in Sources */,
 				38ACEAA2297A219500103FAA /* AppError.swift in Sources */,
+				38ACEABB297F703700103FAA /* LocalDataSource.swift in Sources */,
 				38ACEAAA297C782200103FAA /* SignUpInteractor.swift in Sources */,
 				38C9B61D295DAD9100F5384F /* SignInUiState.swift in Sources */,
 			);

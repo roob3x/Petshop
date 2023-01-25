@@ -20,7 +20,7 @@ struct SplashView: View {
                 viewModel.signInView()
             case .goToSignUpScreen:
                 viewModel.signUpView()
-            case .goHomeScreen:
+            case .goToHomeScreen:
                 Text("Bem vindo a home")
             case .error(let _msg):
                 Text("Erro ao cadastrar")
@@ -47,6 +47,6 @@ extension SplashView {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(viewModel: SplashViewModel())
+        SplashView(viewModel: SplashViewModel(interactor: SplashInteractor()))
     }
 }

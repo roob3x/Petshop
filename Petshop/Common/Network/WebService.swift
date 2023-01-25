@@ -13,6 +13,7 @@ enum WebService {
         case base = "https://habitplus-api.tiagoaguiar.co"
         case postUser = "/users"
         case login = "/auth/login"
+        case refreshToken = "/auth/refresh-token"
     }
     
     enum NetWorkError {
@@ -20,6 +21,13 @@ enum WebService {
         case notFound
         case unauthorized
         case internalServerError
+    }
+    
+    enum Method: String {
+      case get
+      case post
+      case put
+      case delete
     }
     
     enum Result {
@@ -37,10 +45,10 @@ enum WebService {
         return URLRequest(url: url)
     }
     
-    private static func call(path: Endpoint, contentType: ContentType, data: Data?, completion: @escaping (Result) -> Void) {
+    private static func call(path: Endpoint,method: Method, contentType: ContentType, data: Data?, completion: @escaping (Result) -> Void) {
         guard var urlRequest = completeUrl(path: path) else { return }
         
-        urlRequest.httpMethod = "POST"
+        urlRequest.httpMethod = method.rawValue
         urlRequest.setValue("application/json", forHTTPHeaderField: "accept")
         urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = data
@@ -76,18 +84,18 @@ enum WebService {
         task.resume()
     }
     
-    public static func call<T: Encodable> (path: Endpoint, body: T, completion: @escaping (Result) -> Void) {
+    public static func call<T: Encodable> (path: Endpoint,method: Method = .get, body: T, completion: @escaping (Result) -> Void) {
         //linha abaixo realiza a requisicao
         guard let jsonData = try? JSONEncoder().encode(body) else { return }
-        call(path: path, contentType: .json, data: jsonData, completion: completion)
+        call(path: path,method: method, contentType: .json, data: jsonData, completion: completion)
     }
     
-    public static func call(path: Endpoint,params: [URLQueryItem], completion: @escaping (Result) -> Void) {
+    public static func call(path: Endpoint, method: Method = .post,params: [URLQueryItem], completion: @escaping (Result) -> Void) {
         //linha abaixo realiza a requisicao
         guard let urlRequest = completeUrl(path: path) else { return }
         guard let absoluteURL = urlRequest.url?.absoluteString else { return }
         var components = URLComponents(string: absoluteURL)
         components?.queryItems = params
-        call(path: path, contentType: .formUrl, data: components?.query?.data(using: .utf8), completion: completion)
+        call(path: path, method: method, contentType: .formUrl, data: components?.query?.data(using: .utf8), completion: completion)
     }
 }

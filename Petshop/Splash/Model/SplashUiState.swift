@@ -11,6 +11,6 @@ enum SplashUiState {
     case loading
     case goToSignInScreen
     case goToSignUpScreen
-    case goHomeScreen
+    case goToHomeScreen
     case error(String)
 }
