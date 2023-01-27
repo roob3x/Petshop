@@ -30,7 +30,7 @@ struct PetshopCardView: View {
                     HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(viewModel.name)
-                                .foregroundColor(Color.orange)
+                                .foregroundColor(Color.blue)
                             
                             Text(viewModel.label)
                                 .foregroundColor(Color("textColor"))
@@ -45,7 +45,7 @@ struct PetshopCardView: View {
                         
                         VStack(alignment: .leading, spacing: 4){
                             Text("Registrado")
-                                .foregroundColor(Color.orange)
+                                .foregroundColor(Color.blue)
                                 .bold()
                                 .multilineTextAlignment(.leading)
                             
@@ -64,7 +64,7 @@ struct PetshopCardView: View {
                 .frame(width: 8)
                 .foregroundColor(viewModel.state)
         }.background(RoundedRectangle(cornerRadius: 4.0)
-            .stroke(Color.orange, lineWidth: 1.4)
+            .stroke(Color.blue, lineWidth: 1.4)
             .shadow(color: .gray, radius: 2, x: 2.0, y: 2.0)
         )
         .padding(.horizontal, 4)
@@ -84,7 +84,7 @@ struct PetshopCardView_Previews: PreviewProvider {
                     PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Namorar", label: "horas", value: "3", state: .green))
                     
                 }.frame(maxWidth: .infinity)
-                    .navigationTitle("Habitos")
+                    .navigationTitle("Compras")
             }
                 .previewDevice("Iphone 11")
                 .preferredColorScheme($0)

@@ -30,21 +30,25 @@ struct PetshopView: View {
                                         .scaledToFit()
                                         .frame(width: 24, height: 24, alignment: .center)
                                     
-                                    Text("Nenhum habito encontrado :(")
+                                    Text("Nenhum produto comprado ainda :(")
                                 }
                             }
-                            else if case PetshopUiState.fullList = viewModel.uiState {
+                            else if case PetshopUiState.fullList(let rows) = viewModel.uiState {
+                                LazyVStack {
+                                    ForEach(rows, content: PetshopCardView.init(viewModel:))
+                                }
                                 
                             }
                             else if case PetshopUiState.error = viewModel.uiState {
                                 
                             }
                         }
-                    }.navigationTitle("Meus habitos")
+                    }.navigationTitle("Compras")
                 }
             }
+        }.onAppear {
+            viewModel.onAppear()
         }
-        Text("Bem vindo a tela de habitos")
     }
 }
 
@@ -64,7 +68,7 @@ extension PetshopView {
             
             Text(viewModel.title)
                 .font(Font.system(.title3).bold())
-                .foregroundColor(Color.orange)
+                .foregroundColor(Color.blue)
             
             Text(viewModel.headline)
                 .font(Font.system(.title3).bold())
@@ -89,7 +93,7 @@ extension PetshopView {
 extension PetshopView {
     var addButton: some View {
         NavigationLink(destination: Text("Tela de Adicionar").frame(maxWidth: .infinity, maxHeight: .infinity)){
-            Label("Criar Habito", systemImage: "plus.app")
+            Label("Comprar", systemImage: "plus.app")
                 .modifier(ButtonStyle())
         }
         .padding(.horizontal, 16)

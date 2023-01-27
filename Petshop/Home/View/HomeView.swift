@@ -34,7 +34,7 @@ struct HomeView: View {
             
         }
         .background(Color.white)
-        .accentColor(Color.orange)
+        .accentColor(Color.blue)
     }
 }
 
