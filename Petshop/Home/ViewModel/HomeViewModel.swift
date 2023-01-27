@@ -10,3 +10,9 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     
 }
+
+extension HomeViewModel {
+    func petshopView() -> some View {
+        return HomeViewRouter.makePetshopView()
+    }
+}
