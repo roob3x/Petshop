@@ -39,8 +39,19 @@ struct PetshopView: View {
                                 }
                                 
                             }
-                            else if case PetshopUiState.error = viewModel.uiState {
-                                
+                            else if case PetshopUiState.error(let msg) = viewModel.uiState {
+                                Text("")
+                                    .alert(isPresented: .constant(true)) {
+                                        Alert(
+                                        title: Text("Ops! \(msg)"),
+                                        message: Text("Quer tentar novamente?"),
+                                        primaryButton: .default(Text("Sim")) {
+                                            // aqui executa a retentativa
+                                            viewModel.onAppear()
+                                        },
+                                        secondaryButton: .cancel()
+                                        )
+                                    }
                             }
                         }
                     }.navigationTitle("Compras")
@@ -102,6 +113,6 @@ extension PetshopView {
 
 struct PetshopView_Previews: PreviewProvider {
     static var previews: some View {
-        PetshopView(viewModel: PetshopViewModel())
+        PetshopView(viewModel: PetshopViewModel(interector: PetshopInteractor()))
     }
 }

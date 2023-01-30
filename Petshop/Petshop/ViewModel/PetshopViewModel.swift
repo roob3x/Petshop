@@ -6,26 +6,72 @@
 //
 
 import Foundation
+import Combine
+import SwiftUI
+
 
 class PetshopViewModel: ObservableObject {
-    @Published var uiState: PetshopUiState = .emptyList
+    @Published var uiState: PetshopUiState = .loading
     
-    @Published var title = "Voce ainda nao possui compras"
-    @Published var headline = "Aqui voce encontra os melhores produtos"
-    @Published var desc = "O seu pet merece ❤️"
+    @Published var title = ""
+    @Published var headline = ""
+    @Published var desc = ""
+    
+    private var cancellabledRequest: AnyCancellable?
+    private let interactor: PetshopInteractor
+    
+    init(interector: PetshopInteractor) {
+        self.interactor = interector
+    }
+    
+    deinit {
+        cancellabledRequest?.cancel()
+    }
     
     func onAppear() {
         self.uiState = .loading
         
-        DispatchQueue.main.asyncAfter(deadline: .now () + 1) {
-            var rows: [PetshopCardViewModel] = []
-            
-            rows.append(PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Ossinho", label: "horas", value: "2", state: .green))
-            rows.append(PetshopCardViewModel(id: 2, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Racao Golden", label: "horas", value: "3", state: .green))
-            rows.append(PetshopCardViewModel(id: 3, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Biscoito Premier", label: "horas", value: "4", state: .green))
-            
-            self.uiState = .fullList(rows)
-        }
+        
+        cancellabledRequest = interactor.fetchPetshop()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch(completion) {
+                case .failure(let appError):
+                    self.uiState = .error(appError.message)
+                    break
+                case .finished:
+                    break
+                }
+            }, receiveValue: { response in
+                if response.isEmpty {
+                    self.uiState = .emptyList
+                    
+                    self.title = ""
+                    self.headline = "Fique ligado!"
+                    self.desc = "voce ainda nao possui compras!"
+                }
+                else {
+                    self.uiState = .fullList(
+                        response.map {
+                            
+                            let lastDate = $0.lastDate?.toDate(sourcePattern: "yyyy-MM-dd'T'HH:mm:ss", destPattern: "dd/MM/yyyy HH:mm") ?? ""
+                            var state = Color.green
+                            self.title = "Muito bom!"
+                            self.headline = "Voce possui compras!"
+                            self.desc = ""
+                            
+                            if lastDate < Date().toString(destPattern: "dd/MM/yyyy"){
+                                state = .red
+                                self.title = "Atencao"
+                                self.headline = "Fique ligado!"
+                                self.desc = "Voce esta atrasado nas compras!"
+                            }
+                            
+                            return PetshopCardViewModel(id: $0.id, icon: $0.iconUrl ?? "", date: lastDate, name: $0.name, label: $0.label, value: "\($0.value ?? 0)", state: state)
+                        }
+                    )
+                }
+            })
     }
 
 }

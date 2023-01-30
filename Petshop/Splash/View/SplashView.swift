@@ -21,9 +21,9 @@ struct SplashView: View {
             case .goToSignUpScreen:
                 viewModel.signUpView()
             case .goToHomeScreen:
-                Text("Bem vindo a home")
-            case .error(let _msg):
-                Text("Erro ao cadastrar")
+                viewModel.homeView()
+            case .error(let msg):
+                loadingView(error: msg)
             }
         }.onAppear(perform: {
             viewModel.onAppear()

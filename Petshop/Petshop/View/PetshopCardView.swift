@@ -15,7 +15,7 @@ struct PetshopCardView: View {
     var body: some View {
         ZStack(alignment: .trailing){
             
-            NavigationLink(destination: Text("Destination"), isActive: self.$action, label: { EmptyView()
+            NavigationLink(destination: PetshopDetailView(viewModel: PetshopDetailViewModel(id: viewModel.id, name: viewModel.name, label: viewModel.label)), isActive: self.$action, label: { EmptyView()
                 
             })
             

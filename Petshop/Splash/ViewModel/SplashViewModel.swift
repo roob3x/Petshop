@@ -73,4 +73,8 @@ extension SplashViewModel {
     func signUpView() -> some View {
         return SplashViewRouter.makeSignUpView()
     }
+    
+    func homeView() -> some View {
+        return SplashViewRouter.makeHomeView()
+    }
 }

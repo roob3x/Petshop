@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum HomeViewRouter {
-    static func makePetshopView () -> some View {
-        return PetshopView(viewModel: PetshopViewModel())
+    static func makePetshopView (viewModel: PetshopViewModel) -> some View {
+        return PetshopView(viewModel: viewModel)
     }
 }
