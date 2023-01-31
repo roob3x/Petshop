@@ -11,6 +11,8 @@ struct PetshopDetailView: View {
     
     @ObservedObject var viewModel: PetshopDetailViewModel
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     init(viewModel: PetshopDetailViewModel) {
         self.viewModel = viewModel
     }
@@ -37,13 +39,18 @@ struct PetshopDetailView: View {
             Text("Compre todos os dias :)")
             
             LoadingButtonView(action: {
+                viewModel.save()
                 
             }, text: "Salvar", showProgress: self.viewModel.uiState == .loading, disabled: self.viewModel.value.isEmpty)
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             
             Button("Cancelar") {
-                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    withAnimation(.easeOut(duration: 0.15)) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
             }
             .modifier(ButtonStyle())
             .padding(.horizontal, 16)
@@ -58,7 +65,7 @@ struct PetshopDetailView: View {
 struct PetshopDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) {
-            PetshopDetailView(viewModel: PetshopDetailViewModel(id: 1, name: "Aipods 2 pro", label: "Quantidade"))
+            PetshopDetailView(viewModel: PetshopDetailViewModel(id: 1, name: "Aipods 2 pro", label: "Quantidade", interactor: PetshopDetailInteractor()))
                 .previewDevice("Iphone 11")
                 .preferredColorScheme($0)
         }

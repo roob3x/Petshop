@@ -59,6 +59,10 @@
 		38F9824A29884A2E00E00D03 /* PetshopDetailUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9824929884A2E00E00D03 /* PetshopDetailUiState.swift */; };
 		38F9824C29884A9600E00D03 /* PetshopDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9824B29884A9600E00D03 /* PetshopDetailViewModel.swift */; };
 		38F9824E29884B9500E00D03 /* PetshopDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9824D29884B9500E00D03 /* PetshopDetailView.swift */; };
+		38F9825B2988A8EB00E00D03 /* PetshopCardViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9825A2988A8EB00E00D03 /* PetshopCardViewRouter.swift */; };
+		38F9825E29892A7C00E00D03 /* PetshopDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9825D29892A7C00E00D03 /* PetshopDetailInteractor.swift */; };
+		38F9826029892B2400E00D03 /* PetshopDetailRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9825F29892B2400E00D03 /* PetshopDetailRemoteDataSource.swift */; };
+		38F9826229892C3600E00D03 /* PetshopValueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F9826129892C3600E00D03 /* PetshopValueRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +119,10 @@
 		38F9824929884A2E00E00D03 /* PetshopDetailUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopDetailUiState.swift; sourceTree = "<group>"; };
 		38F9824B29884A9600E00D03 /* PetshopDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopDetailViewModel.swift; sourceTree = "<group>"; };
 		38F9824D29884B9500E00D03 /* PetshopDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopDetailView.swift; sourceTree = "<group>"; };
+		38F9825A2988A8EB00E00D03 /* PetshopCardViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopCardViewRouter.swift; sourceTree = "<group>"; };
+		38F9825D29892A7C00E00D03 /* PetshopDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopDetailInteractor.swift; sourceTree = "<group>"; };
+		38F9825F29892B2400E00D03 /* PetshopDetailRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopDetailRemoteDataSource.swift; sourceTree = "<group>"; };
+		38F9826129892C3600E00D03 /* PetshopValueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetshopValueRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +197,7 @@
 			children = (
 				38ACEAD52980B29400103FAA /* PetshopViewModel.swift */,
 				38ACEAE629820E4600103FAA /* PetshopCardViewModel.swift */,
+				38F9825A2988A8EB00E00D03 /* PetshopCardViewRouter.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -460,6 +469,7 @@
 		38F98245298849F700E00D03 /* PetshopDetail */ = {
 			isa = PBXGroup;
 			children = (
+				38F9825C29892A5800E00D03 /* Interactor */,
 				38F9824829884A1600E00D03 /* ViewModel */,
 				38F9824729884A1200E00D03 /* View */,
 				38F9824629884A0A00E00D03 /* Model */,
@@ -471,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				38F9824929884A2E00E00D03 /* PetshopDetailUiState.swift */,
+				38F9826129892C3600E00D03 /* PetshopValueRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -489,6 +500,15 @@
 				38F9824B29884A9600E00D03 /* PetshopDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		38F9825C29892A5800E00D03 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				38F9825D29892A7C00E00D03 /* PetshopDetailInteractor.swift */,
+				38F9825F29892B2400E00D03 /* PetshopDetailRemoteDataSource.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,12 +607,14 @@
 				38C9B617295DAC6F00F5384F /* SplashViewModelRouter.swift in Sources */,
 				38ACEADC2980B4C700103FAA /* HomeViewRouter.swift in Sources */,
 				38C9B63D2964FFB700F5384F /* LoadingButtonView.swift in Sources */,
+				38F9825B2988A8EB00E00D03 /* PetshopCardViewRouter.swift in Sources */,
 				38C9B63A29644C1D00F5384F /* String+Extensions.swift in Sources */,
 				38C9B60F295DA95800F5384F /* SplashUiState.swift in Sources */,
 				38ACEAC0297F751800103FAA /* SplashRemoteDataSource.swift in Sources */,
 				38C9B623295DAE1100F5384F /* SignInViewRouter.swift in Sources */,
 				38C9B611295DAA1200F5384F /* SplashViewModel.swift in Sources */,
 				38ACEAF82986EC7C00103FAA /* PetshopResponse.swift in Sources */,
+				38F9826229892C3600E00D03 /* PetshopValueRequest.swift in Sources */,
 				38ACEA862972C3B100103FAA /* ErrorResponse.swift in Sources */,
 				38C9B64E296509D500F5384F /* Gender.swift in Sources */,
 				38ACEAC2297F757C00103FAA /* RefreshRequest.swift in Sources */,
@@ -605,10 +627,12 @@
 				38C9B6472965086500F5384F /* SignUpView.swift in Sources */,
 				38ACEAEA2982171F00103FAA /* ButtonStyle.swift in Sources */,
 				38ACEAD42980B27900103FAA /* PetshopView.swift in Sources */,
+				38F9825E29892A7C00E00D03 /* PetshopDetailInteractor.swift in Sources */,
 				38F9824A29884A2E00E00D03 /* PetshopDetailUiState.swift in Sources */,
 				38ACEAA2297A219500103FAA /* AppError.swift in Sources */,
 				38ACEABB297F703700103FAA /* LocalDataSource.swift in Sources */,
 				38ACEAAA297C782200103FAA /* SignUpInteractor.swift in Sources */,
+				38F9826029892B2400E00D03 /* PetshopDetailRemoteDataSource.swift in Sources */,
 				38ACEAFC2986F0C800103FAA /* Date+Extension.swift in Sources */,
 				38C9B61D295DAD9100F5384F /* SignInUiState.swift in Sources */,
 			);

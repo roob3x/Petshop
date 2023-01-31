@@ -20,4 +20,11 @@ struct PetshopCardViewModel: Identifiable, Equatable {
     static func == (lhs: PetshopCardViewModel, rhs: PetshopCardViewModel) -> Bool {
         return lhs.id == rhs.id
     }
+    
+}
+
+extension PetshopCardViewModel {
+    func petshopDetailView() -> some View {
+        return PetshopCardViewRouter.makePetshopDetailView(id: id, name: name, label: label)
+    }
 }
