@@ -24,7 +24,11 @@ struct PetshopCardView: View {
                 self.action = true
             }, label: {
                 HStack {
-                    Image(systemName: "pencil")
+                    ImageView(url: viewModel.icon)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 32, height: 32)
+                        .clipped()
+                    //Image(systemName: "pencil")
                         .padding(.horizontal, 8)
                     Spacer()
                     
