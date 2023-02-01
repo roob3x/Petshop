@@ -18,10 +18,19 @@ class PetshopViewModel: ObservableObject {
     @Published var desc = ""
     
     private var cancellabledRequest: AnyCancellable?
+    private var cancellableNotify: AnyCancellable?
     private let interactor: PetshopInteractor
+    
+    private var petshopPublisher = PassthroughSubject<Bool, Never>()
     
     init(interector: PetshopInteractor) {
         self.interactor = interector
+        
+        cancellableNotify = petshopPublisher.sink(receiveValue: { saved in
+            print("saved: \(saved)")
+            self.onAppear()
+            
+        })
     }
     
     deinit {
@@ -67,7 +76,7 @@ class PetshopViewModel: ObservableObject {
                                 self.desc = "Voce esta atrasado nas compras!"
                             }
                             
-                            return PetshopCardViewModel(id: $0.id, icon: $0.iconUrl ?? "", date: lastDate, name: $0.name, label: $0.label, value: "\($0.value ?? 0)", state: state)
+                            return PetshopCardViewModel(id: $0.id, icon: $0.iconUrl ?? "", date: lastDate, name: $0.name, label: $0.label, value: "\($0.value ?? 0)", state: state, petshopPublisher: self.petshopPublisher)
                         }
                     )
                 }

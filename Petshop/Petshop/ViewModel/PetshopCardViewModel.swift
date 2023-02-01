@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct PetshopCardViewModel: Identifiable, Equatable {
     var id: Int = 0
@@ -17,6 +18,8 @@ struct PetshopCardViewModel: Identifiable, Equatable {
     var value: String = ""
     var state: Color = .green
     
+    var petshopPublisher: PassthroughSubject<Bool, Never>
+    
     static func == (lhs: PetshopCardViewModel, rhs: PetshopCardViewModel) -> Bool {
         return lhs.id == rhs.id
     }
@@ -25,6 +28,6 @@ struct PetshopCardViewModel: Identifiable, Equatable {
 
 extension PetshopCardViewModel {
     func petshopDetailView() -> some View {
-        return PetshopCardViewRouter.makePetshopDetailView(id: id, name: name, label: label)
+        return PetshopCardViewRouter.makePetshopDetailView(id: id, name: name, label: label, petshopPublisher: petshopPublisher)
     }
 }

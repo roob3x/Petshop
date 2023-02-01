@@ -15,7 +15,8 @@ class PetshopDetailViewModel: ObservableObject {
     @Published var value = ""
     
     private var cancellable: AnyCancellable?
-    
+    var cancellables = Set<AnyCancellable>()
+    var petshopPublisher: PassthroughSubject<Bool,Never>?
     
     let id: Int
     let name: String
@@ -32,6 +33,9 @@ class PetshopDetailViewModel: ObservableObject {
     
     deinit {
         cancellable?.cancel()
+        for cancellable in cancellables {
+            cancellable.cancel()
+        }
     }
     
     func save() {
@@ -49,6 +53,7 @@ class PetshopDetailViewModel: ObservableObject {
             }, receiveValue: { created in
                 if created {
                     self.uiState = .success
+                    self.petshopPublisher?.send(created)
                 }
             })
     }

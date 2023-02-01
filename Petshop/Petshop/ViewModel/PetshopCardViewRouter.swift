@@ -7,11 +7,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 enum PetshopCardViewRouter {
     
-    static func makePetshopDetailView(id: Int, name: String, label: String) -> some View {
+    static func makePetshopDetailView(id: Int, name: String, label: String, petshopPublisher: PassthroughSubject<Bool, Never>) -> some View {
         let viewModel = PetshopDetailViewModel(id: id, name: name, label: label, interactor: PetshopDetailInteractor())
+        viewModel.petshopPublisher = petshopPublisher
         return PetshopDetailView(viewModel: viewModel)
     }
     

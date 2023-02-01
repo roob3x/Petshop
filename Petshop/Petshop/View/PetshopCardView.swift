@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct PetshopCardView: View {
     
@@ -78,10 +79,10 @@ struct PetshopCardView_Previews: PreviewProvider {
         ForEach(ColorScheme.allCases, id: \.self) {
             NavigationView{
                 List {
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Estudar swift", label: "horas", value: "2", state: .green))
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Crossfit", label: "horas", value: "3", state: .green))
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Ingles", label: "horas", value: "3", state: .green))
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Namorar", label: "horas", value: "3", state: .green))
+                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Estudar swift", label: "horas", value: "2", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Crossfit", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Ingles", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Namorar", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
                     
                 }.frame(maxWidth: .infinity)
                     .navigationTitle("Compras")
