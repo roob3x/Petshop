@@ -12,4 +12,8 @@ enum HomeViewRouter {
     static func makePetshopView (viewModel: PetshopViewModel) -> some View {
         return PetshopView(viewModel: viewModel)
     }
+    
+    static func makeProfileView(viewModel: ProfileViewModel) -> some View {
+        return ProfileView(viewModel: viewModel)
+    }
 }
