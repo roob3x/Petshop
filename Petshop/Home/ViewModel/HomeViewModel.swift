@@ -9,7 +9,7 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     let viewModel = PetshopViewModel(interector: PetshopInteractor())
-    let profileViewModel = ProfileViewModel()
+    let profileViewModel = ProfileViewModel(interector: ProfileInterector())
     
 }
 

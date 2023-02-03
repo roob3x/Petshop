@@ -1,0 +1,15 @@
+//
+//  ProfileUiState.swift
+//  Petshop
+//
+//  Created by Roberto Filho on 02/02/23.
+//
+
+import Foundation
+
+enum ProfileUiState {
+    case none
+    case loading
+    case fetchSucess
+    case fetchError(String)
+}
