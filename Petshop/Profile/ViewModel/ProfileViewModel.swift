@@ -21,7 +21,8 @@ class ProfileViewModel: ObservableObject {
     @Published var document = ""
     @Published var gender: Gender?
     
-    private var cancellable: AnyCancellable?
+    private var cancellableFetch: AnyCancellable?
+    private var cancellableUpdate: AnyCancellable?
     
     private let interector: ProfileInterector
     
@@ -30,12 +31,13 @@ class ProfileViewModel: ObservableObject {
     }
     
     deinit {
-        cancellable?.cancel()
+        cancellableFetch?.cancel()
+        cancellableUpdate?.cancel()
     }
     
     func fetchUser() {
         self.uiState = .loading
-        cancellable = interector.fetchUser()
+        cancellableFetch = interector.fetchUser()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch(completion) {
@@ -73,6 +75,45 @@ class ProfileViewModel: ObservableObject {
                 
                 self.birthdayValidation.value = birthday
                 self.uiState = .fetchSucess
+            })
+    }
+    
+    func updateUser() {
+        self.uiState = .updateLoading
+        
+        guard let userId = userId,
+              let gender = gender else { return }
+        
+        // Pegar a string -> dd/MM/yyyy -> Date
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "dd/MM/yyyy"
+        
+        let dateFormatted = formatter.date(from: birthdayValidation.value)
+        
+        // validar a data
+        guard let dateFormatted = dateFormatted else {
+            self.uiState = .updateError("Data invalida \(birthdayValidation.value)")
+            return
+        }
+        
+        //Date -> yyyy-MM-dd -> String
+        formatter.dateFormat = "yyyy-MM-dd"
+        let birthday = formatter.string(from: dateFormatted)
+        
+        cancellableUpdate = interector.updateUser(userId: userId, profileRequest: ProfileRequest(fullName: fullNameValidation.value, phone: phoneValidation.value, birthday: birthday, gender: gender.index))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch(completion) {
+                case .failure(let appError):
+                    self.uiState = .updateError(appError.message)
+                    break
+                case .finished:
+                    break
+                }
+                
+            }, receiveValue: { response in
+                self.uiState = .updateSuccess
             })
     }
     

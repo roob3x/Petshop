@@ -17,6 +17,7 @@
 		384E590E298C993A00E8A395 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E590D298C993A00E8A395 /* ProfileResponse.swift */; };
 		384E5911298C99A400E8A395 /* ProfileRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E5910298C99A400E8A395 /* ProfileRemoteDataSource.swift */; };
 		384E5914298C9AF700E8A395 /* ProfileInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E5913298C9AF700E8A395 /* ProfileInterector.swift */; };
+		384E5918298E883900E8A395 /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E5917298E883900E8A395 /* ProfileRequest.swift */; };
 		38ACEA862972C3B100103FAA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEA852972C3B100103FAA /* ErrorResponse.swift */; };
 		38ACEA8E2976BD5000103FAA /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEA8D2976BD5000103FAA /* SignInResponse.swift */; };
 		38ACEA902976BD7500103FAA /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ACEA8F2976BD7500103FAA /* SignInRequest.swift */; };
@@ -84,6 +85,7 @@
 		384E590D298C993A00E8A395 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
 		384E5910298C99A400E8A395 /* ProfileRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRemoteDataSource.swift; sourceTree = "<group>"; };
 		384E5913298C9AF700E8A395 /* ProfileInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterector.swift; sourceTree = "<group>"; };
+		384E5917298E883900E8A395 /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
 		38ACEA852972C3B100103FAA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		38ACEA8D2976BD5000103FAA /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		38ACEA8F2976BD7500103FAA /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				384E590B298C990700E8A395 /* ProfileUiState.swift */,
 				384E590D298C993A00E8A395 /* ProfileResponse.swift */,
+				384E5917298E883900E8A395 /* ProfileRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				38ACEAFA2986EFFD00103FAA /* PetshopInteractor.swift in Sources */,
 				38ACEA9E29795A5000103FAA /* SignInRemoteDataSource.swift in Sources */,
 				38ACEAAC297C783400103FAA /* SignUpRemoteDataSource.swift in Sources */,
+				384E5918298E883900E8A395 /* ProfileRequest.swift in Sources */,
 				38ACEA9C297959BD00103FAA /* SignInInteractor.swift in Sources */,
 				38ACEADA2980B3B300103FAA /* PetshopUiState.swift in Sources */,
 				38C9B63429644AF300F5384F /* EditTextView.swift in Sources */,
