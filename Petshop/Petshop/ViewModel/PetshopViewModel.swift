@@ -20,10 +20,12 @@ class PetshopViewModel: ObservableObject {
     private var cancellabledRequest: AnyCancellable?
     private var cancellableNotify: AnyCancellable?
     private let interactor: PetshopInteractor
+    let isCharts: Bool
     
     private var petshopPublisher = PassthroughSubject<Bool, Never>()
     
-    init(interector: PetshopInteractor) {
+    init(isCharts: Bool, interector: PetshopInteractor) {
+        self.isCharts = isCharts
         self.interactor = interector
         
         cancellableNotify = petshopPublisher.sink(receiveValue: { saved in

@@ -10,15 +10,26 @@ import Combine
 
 struct PetshopCardView: View {
     
-    let viewModel: PetshopCardViewModel
     @State private var action = false
+    let isChart: Bool
+    let viewModel: PetshopCardViewModel
     
     var body: some View {
         ZStack(alignment: .trailing){
             
-            NavigationLink(destination: viewModel.petshopDetailView(), isActive: self.$action, label: { EmptyView()
-                
-            })
+            if isChart {
+                NavigationLink(destination: viewModel.chartView(), isActive: self.$action, label: { EmptyView()
+                    
+                })
+            }
+            
+            else {
+                NavigationLink(destination: viewModel.petshopDetailView(), isActive: self.$action, label: {EmptyView()
+                    
+                }
+                )
+            }
+            
             
             Button(action: {
                 self.action = true
@@ -65,9 +76,12 @@ struct PetshopCardView: View {
                 .padding()
                 .cornerRadius(4.0)
             })
-            Rectangle()
-                .frame(width: 8)
-                .foregroundColor(viewModel.state)
+            if !isChart {
+                Rectangle()
+                    .frame(width: 8)
+                    .foregroundColor(viewModel.state)
+            }
+            
         }.background(RoundedRectangle(cornerRadius: 4.0)
             .stroke(Color.blue, lineWidth: 1.4)
             .shadow(color: .gray, radius: 2, x: 2.0, y: 2.0)
@@ -83,10 +97,10 @@ struct PetshopCardView_Previews: PreviewProvider {
         ForEach(ColorScheme.allCases, id: \.self) {
             NavigationView{
                 List {
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Estudar swift", label: "horas", value: "2", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Crossfit", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Ingles", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
-                    PetshopCardView(viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Namorar", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(isChart: false, viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Estudar swift", label: "horas", value: "2", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(isChart: false, viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Crossfit", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(isChart: false, viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Ingles", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
+                    PetshopCardView(isChart: false, viewModel: PetshopCardViewModel(id: 1, icon: "https://via.placeholder.com/150", date: "01/01/2023 00:00:00", name: "Namorar", label: "horas", value: "3", state: .green, petshopPublisher: PassthroughSubject<Bool, Never>()))
                     
                 }.frame(maxWidth: .infinity)
                     .navigationTitle("Compras")

@@ -19,9 +19,13 @@ struct PetshopView: View {
                 NavigationView {
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 12){
-                            topContainer
                             
-                            addButton
+                            if !viewModel.isCharts{
+                                topContainer
+                                
+                                addButton
+                            }
+                           
                             if case PetshopUiState.emptyList = viewModel.uiState {
                                 VStack {
                                     Spacer(minLength: 60)
@@ -35,7 +39,9 @@ struct PetshopView: View {
                             }
                             else if case PetshopUiState.fullList(let rows) = viewModel.uiState {
                                 LazyVStack {
-                                    ForEach(rows, content: PetshopCardView.init(viewModel:))
+                                    ForEach(rows) { row in
+                                        PetshopCardView(isChart: viewModel.isCharts, viewModel: row)
+                                    }
                                 }
                                 
                             }
@@ -113,6 +119,6 @@ extension PetshopView {
 
 struct PetshopView_Previews: PreviewProvider {
     static var previews: some View {
-        PetshopView(viewModel: PetshopViewModel(interector: PetshopInteractor()))
+        PetshopView(viewModel: PetshopViewModel(isCharts: false,interector: PetshopInteractor()))
     }
 }

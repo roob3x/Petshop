@@ -20,7 +20,7 @@ struct HomeView: View {
                     Text("Menu")
                 }.tag(0)
             
-            Text("Conteudo de Graficos \(selection)")
+            viewModel.petshopForChartView()
                 .tabItem {
                     Image(systemName: "chart.bar")
                     Text("Graficos")

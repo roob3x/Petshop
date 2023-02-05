@@ -8,14 +8,19 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    let viewModel = PetshopViewModel(interector: PetshopInteractor())
+    let petshopViewModel = PetshopViewModel(isCharts: false, interector: PetshopInteractor())
+    let pershopForChartsViewModel = PetshopViewModel(isCharts: true, interector: PetshopInteractor())
     let profileViewModel = ProfileViewModel(interector: ProfileInterector())
     
 }
 
 extension HomeViewModel {
     func petshopView() -> some View {
-        return HomeViewRouter.makePetshopView(viewModel: viewModel)
+        return HomeViewRouter.makePetshopView(viewModel: petshopViewModel)
+    }
+    
+    func petshopForChartView() -> some View {
+        return HomeViewRouter.makePetshopView(viewModel: pershopForChartsViewModel)
     }
     
     func profileView() -> some View {

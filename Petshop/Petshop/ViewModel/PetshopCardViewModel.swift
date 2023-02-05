@@ -30,4 +30,8 @@ extension PetshopCardViewModel {
     func petshopDetailView() -> some View {
         return PetshopCardViewRouter.makePetshopDetailView(id: id, name: name, label: label, petshopPublisher: petshopPublisher)
     }
+    
+    func chartView() -> some View {
+        return PetshopCardViewRouter.makeChartView(id: id)
+    }
 }

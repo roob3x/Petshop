@@ -17,4 +17,8 @@ enum PetshopCardViewRouter {
         return PetshopDetailView(viewModel: viewModel)
     }
     
+    static func makeChartView(id: Int) -> some View{
+        return ChartView()
+    }
+    
 }
