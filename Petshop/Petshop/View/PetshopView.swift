@@ -109,7 +109,7 @@ extension PetshopView {
 
 extension PetshopView {
     var addButton: some View {
-        NavigationLink(destination: Text("Tela de Adicionar").frame(maxWidth: .infinity, maxHeight: .infinity)){
+        NavigationLink(destination: viewModel.petshopCreateView().frame(maxWidth: .infinity, maxHeight: .infinity)){
             Label("Comprar", systemImage: "plus.app")
                 .modifier(ButtonStyle())
         }

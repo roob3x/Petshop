@@ -86,3 +86,9 @@ class PetshopViewModel: ObservableObject {
     }
 
 }
+
+extension PetshopViewModel {
+    func petshopCreateView() -> some View {
+        return PetshopViewRouter.makePetshopCreateView(petshopPublisher: petshopPublisher)
+    }
+}
