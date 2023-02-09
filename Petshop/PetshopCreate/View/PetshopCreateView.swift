@@ -26,7 +26,7 @@ struct PetshopCreateView: View {
                     self.shouldPresentCamera = true
                 }, label: {
                     VStack {
-                        Image(systemName: "camera.fill")
+                        viewModel.image!
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
@@ -36,6 +36,9 @@ struct PetshopCreateView: View {
                     .foregroundColor(.blue)
                 })
                 .padding(.bottom, 12)
+                .sheet(isPresented: self.$shouldPresentCamera) {
+                    ImagePickerView(image: self.$viewModel.image, imageData: $viewModel.imageData, isPresented: $shouldPresentCamera, sourceType: .camera)
+                }
             }
             
             VStack {
