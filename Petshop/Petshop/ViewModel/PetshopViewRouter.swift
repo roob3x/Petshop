@@ -11,7 +11,7 @@ import SwiftUI
 
 enum PetshopViewRouter {
     static func makePetshopCreateView(petshopPublisher: PassthroughSubject<Bool, Never>) -> some View {
-        let viewModel = PetshopCreateViewModel(interactor: PetshopDetailInteractor())
+        let viewModel = PetshopCreateViewModel(interactor: PetshopCreateInteractor())
         viewModel.petshopPublisher = petshopPublisher
         return PetshopCreateView(viewModel: viewModel)
     }

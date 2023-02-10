@@ -23,10 +23,10 @@ class PetshopCreateViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     var petshopPublisher: PassthroughSubject<Bool,Never>?
 
-    let interactor: PetshopDetailInteractor
+    let interactor: PetshopCreateInteractor
     
     
-    init(interactor: PetshopDetailInteractor) {
+    init(interactor: PetshopCreateInteractor) {
         self.interactor = interactor
     }
     
@@ -39,5 +39,21 @@ class PetshopCreateViewModel: ObservableObject {
     
     func save() {
         self.uiState = .loading
+        
+        cancellable = interactor.save(petshopCreateRequest: PetshopCreateRequest(imageData: imageData, name: name, label: label))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch(completion) {
+                case .failure(let appError):
+                    self.uiState = .error(appError.message)
+                    break
+                case . finished:
+                    break
+                }
+                
+            }, receiveValue: {
+                self.uiState = .success
+                self.petshopPublisher?.send(true)
+            })
     }
 }

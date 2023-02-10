@@ -89,7 +89,7 @@ struct PetshopCreateView: View {
 struct PetshopCreateView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) {
-            PetshopCreateView(viewModel: PetshopCreateViewModel(interactor: PetshopDetailInteractor()))
+            PetshopCreateView(viewModel: PetshopCreateViewModel(interactor: PetshopCreateInteractor()))
                 .previewDevice("Iphone 11")
                 .preferredColorScheme($0)
         }
