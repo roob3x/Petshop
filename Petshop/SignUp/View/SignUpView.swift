@@ -70,13 +70,17 @@ extension SignUpView {
 
 extension SignUpView {
     var phoneField: some View {
-        EditTextView(text: $viewModel.phone, placeholder: "Telefone *", keyboard: .numberPad, error: "Preencha  DD + Telefone", failure: viewModel.phone.count < 10 || viewModel.phone.count >= 12)
+        EditTextView(text: $viewModel.phone, placeholder: "Celular *",
+                     mask: "(##) ####-####",
+                     keyboard: .numberPad, error: "Preencha  DD + Telefone", failure: viewModel.phone.count < 10 || viewModel.phone.count < 14)
     }
 }
 
 extension SignUpView {
     var birthdayField: some View {
-        EditTextView(text: $viewModel.birthday, placeholder: "Data de nascimento *", keyboard: .numberPad, error: "Preencha data nasc dd-MM-YYYY", failure: viewModel.birthday.count < 10)
+        EditTextView(text: $viewModel.birthday, placeholder: "Data de nascimento *",
+                     mask: "##/##/####",
+                     keyboard: .numberPad, error: "Preencha data nasc dd-MM-YYYY", failure: viewModel.birthday.count < 10)
     }
 }
 
@@ -95,7 +99,8 @@ extension SignUpView {
 
 extension SignUpView {
     var documentField: some View {
-        EditTextView(text: $viewModel.document, placeholder: "CPF *", keyboard: .numberPad, error: "Preencha corretamente seu CPF", failure: viewModel.document.count != 11)
+        EditTextView(text: $viewModel.document, placeholder: "CPF *",
+                     mask: "###.###.###-##", keyboard: .numberPad, error: "Preencha corretamente seu CPF", failure: viewModel.document.count != 14)
         //TODO MASK
         //TODO isDisabled
     }
@@ -111,8 +116,8 @@ extension SignUpView {
           showProgress: self.viewModel.uiState == SignUpUiState.loading,
                           disabled: !viewModel.email.isEmail() || viewModel.password.count < 8
                           || viewModel.fullName.count < 3
-                          || viewModel.document.count != 11
-                          || viewModel.phone.count < 10 || viewModel.phone.count >= 12
+                          || viewModel.document.count != 14
+                          || viewModel.phone.count < 14 || viewModel.phone.count > 15
                           || viewModel.birthday.count < 10
         )
     }
