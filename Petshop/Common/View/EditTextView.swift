@@ -31,6 +31,7 @@ struct EditTextView: View {
                 TextField(placeholder,text: $text)
                     .foregroundColor(Color("textColor"))
                     .keyboardType(keyboard)
+                    .autocapitalization(autocapitalization)
                     .textFieldStyle(CustomTextFieldStyle())
                     .onChange(of: text) { value in
                         if let mask = mask {

@@ -52,7 +52,8 @@ struct SignUpView: View {
 
 extension SignUpView {
     var fullNameField: some View {
-        EditTextView(text: $viewModel.fullName, placeholder: "Nome Completo *", keyboard: .alphabet, error: "Preencha seu nome corretamente", failure: viewModel.fullName.count < 5)
+        EditTextView(text: $viewModel.fullName, placeholder: "Nome Completo *", keyboard: .alphabet, error: "Preencha seu nome corretamente", failure: viewModel.fullName.count < 5,
+                     autocapitalization: .words)
     }
 }
 
